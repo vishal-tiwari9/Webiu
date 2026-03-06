@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProjectsComponent } from './projects.component';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideToastr } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('ProjectsComponent', () => {
   let component: ProjectsComponent;
@@ -9,10 +9,10 @@ describe('ProjectsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProjectsComponent],
-      providers: [
-        provideAnimations(),   // ← Required for toastr
-        provideToastr(),       // ← Fixes ToastConfig provider error
+      imports: [
+        ProjectsComponent,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),   // ← yeh fix karega Toastr provider error
       ],
     })
     .compileComponents();
